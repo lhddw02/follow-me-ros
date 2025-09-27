@@ -5,8 +5,7 @@ from std_msgs.msg import String
 
 import serial
 
-UWBData = serial.Serial('/dev/ttyUSB0' , 230400)
-arduinoData = serial.Serial('/dev/ttyUSB1' , 9600)
+arduinoData = serial.Serial('/dev/ttyUSB0' , 9600)
 
 class SubSerialNode(Node):
 
@@ -28,7 +27,6 @@ class SubSerialNode(Node):
             myCmd = input('please input command: ')
             myCmd = myCmd + '\r'
             arduinoData.write(myCmd.encode())
-            arduinoData.write(myCmd.encode())
             self.get_logger().info("assigned : %s" % myCmd.data)
             self.get_logger().info("heard : %s" % msg.data)
         	
@@ -37,26 +35,6 @@ class SubSerialNode(Node):
     def command_callback(self, msg):
     	self.get_logger().info("assigned : %s" % myCmd.data)
     	self.get_logger().info("heard : %s" % msg.data)
-    	
-	def parseUWBdata(self,):
-	    #uwb_bytes = UWBData.readline()
-	    #uwb_str = uwb_bytes.decode('utf-8').strip()
-	    #uwb_str = UWBData.readline()
-	    
-	    uwb_bytes = UWBData.read(17)
-	    while (uwb_bytes[:4] != b'\xff\xff\xff\xff');
-	        uwb_bytes = UWBData.read(17)
-	        self.get_logger().info("waiting UWB start bytes...")
-	    
-	    dist_byte = uwb_bytes[20:24]
-	    dist = int.from_bytes(dist_byte, byteorder='big', signed=False)
-	    angle_byte = uwb_bytes[24:26]
-	    angle = int.from_bytes(angle_byte, byteorder='big', signed=True)
-	    elev_byte = uwb_bytes[26:28]
-	    elev = int.from_bytes(elev_byte, byteorder='big', signed=True)
-	        
-	    uwb_str = uwb_bytes.decode('utf-8').strip()
-    
     
 
 

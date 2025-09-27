@@ -1,6 +1,6 @@
 from setuptools import find_packages, setup
 
-package_name = 'follow-me-v1.0'
+package_name = 'follow_me_v1_0'
 
 setup(
     name=package_name,
@@ -15,11 +15,13 @@ setup(
     zip_safe=True,
     maintainer='pi4bjazzy',
     maintainer_email='lhddw02@gmail.com',
-    description='TODO: Package description',
+    description='follow-me-ros',
     license='Apache-2.0',
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
+            'receiver = follow_me_v1_0.sub_func:main',
+            'uwbserial = follow_me_v1_0.serial_sub_func:main',
         ],
     },
 )

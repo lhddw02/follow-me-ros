@@ -1,11 +1,14 @@
 <?xml version="1.0"?>
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
-  <name>follow-me-v1.0</name>
+  <name>follow_me_v1_0</name>
   <version>0.0.0</version>
-  <description>TODO: Package description</description>
+  <description>follow-me-ros</description>
   <maintainer email="lhddw02@gmail.com">pi4bjazzy</maintainer>
   <license>Apache-2.0</license>
+
+  <depend>rclcpp</depend>
+  <depend>std_msgs</depend>
 
   <test_depend>ament_copyright</test_depend>
   <test_depend>ament_flake8</test_depend>
